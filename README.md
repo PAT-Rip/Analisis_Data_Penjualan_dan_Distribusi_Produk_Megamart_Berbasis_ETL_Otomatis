@@ -33,6 +33,7 @@ Dalam menyelesaikan project ini saya menggunakan airflow untuk membuat workflow 
 6. Psychopg2
 7. elasticsearch
 8. Great Expectation
+9. Kibana
 ```
 
 ## Reference
