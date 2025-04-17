@@ -6,11 +6,11 @@ Saya membangun pipeline ETL otomatis untuk menganalisis penjualan dan distribusi
 ## Repository Outline
 ```
 1. Folder images: Folder yang berisikan screenshot dari dashboard yang sudah dibuat di kibana 
-2. P2M3_rifat_syauqi_DAG_graph.jpg: Gambar dari graph workflow yang sudah dilakukan di airflow
-3. P2M3_rifat_syauqi_DAG.py: Berisikan DAG workflow airflow yang digunakan untuk mengambil data dari postgres, cleaning data, dan post ke elasticsearch
-4. P2M3_rifat_syauqi_data_clean.csv: Tabel CSV hasil dari cleaning data yang dilakukan DAG
-5. P2M3_rifat_syauqi_data_raw.csv: Dataset raw yang digunakan dalam project ini
-6. P2M3_rifat_syauqi_GX.ipynb: Berisikan hasil test yang dilakukan menggunakan Great Expectation
+2. DAG_graph.jpg: Gambar dari graph workflow yang sudah dilakukan di airflow
+3. DAG.py: Berisikan DAG workflow airflow yang digunakan untuk mengambil data dari postgres, cleaning data, dan post ke elasticsearch
+4. data_clean.csv: Tabel CSV hasil dari cleaning data yang dilakukan DAG
+5. data_raw.csv: Dataset raw yang digunakan dalam project ini
+6. Great_Expectations.ipynb: Berisikan hasil test yang dilakukan menggunakan Great Expectation
 ```
 
 ## Problem Background
