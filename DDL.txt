@@ -1,0 +1,50 @@
+1. Membuat Table di Postgres
+``` sql
+CREATE TABLE IF NOT EXISTS table_proj3 (
+    "Row_ID" INT,
+    "Order_ID" TEXT,
+    "Order_Date" TEXT,
+    "Ship_Date" TEXT,
+    "Ship_Mode" TEXT,
+    "Customer_ID" TEXT,
+    "Customer_Name" TEXT,
+    "Segment" TEXT,
+    "Country" TEXT,
+    "City" TEXT,
+    "State" TEXT,
+    "Postal_Code" TEXT,
+    "Region" TEXT,
+    "Product_ID" TEXT,
+    "Category" TEXT,
+    "Sub_Category" TEXT,
+    "Product_Name" TEXT,
+    "Sales" FLOAT
+);
+```
+2. Insert data dari file data_raw.csv kedalam table yang sudah kita buat
+import pandas as pd
+from sqlalchemy import create_engine
+
+# Baca file CSV dengan encoding latin1
+df = pd.read_csv('data_raw.csv', encoding='latin1')
+
+# Pilih kolom yang digunakan
+cols = [
+    "Row_ID", "Order_ID", "Order_Date", "Ship_Date", "Ship_Mode",
+    "Customer_ID", "Customer_Name", "Segment", "Country", "City",
+    "State", "Postal_Code", "Region", "Product_ID", "Category",
+    "Sub_Category", "Product_Name", "Sales"
+]
+
+df = df[cols]
+
+# Bersihkan kolom Sales: hapus titik (.) pemisah ribuan dan ubah jadi float
+df['Sales'] = df['Sales'].astype(str).str.replace('.', '', regex=False).astype(float)
+
+# Koneksi ke PostgreSQL
+engine = create_engine('postgresql://airflow:airflow@localhost:5434/airflow')
+
+# Insert data ke table_proj3
+df.to_sql('table_proj3', engine, index=False, if_exists='append', method='multi')
+
+print("✅ Data berhasil dimasukkan ke table_proj3 di PostgreSQL.")
